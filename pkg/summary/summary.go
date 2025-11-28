@@ -1,6 +1,7 @@
 package summary
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/rancher/wrangler/v3/pkg/data"
@@ -112,6 +113,7 @@ func Summarize(runtimeObj runtime.Object) Summary {
 
 	for _, summarizer := range Summarizers {
 		summary = summarizer(obj, conditions, summary)
+		fmt.Println(summary)
 	}
 
 	if summary.State == "" {

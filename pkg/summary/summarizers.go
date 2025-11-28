@@ -1,6 +1,7 @@
 package summary
 
 import (
+	"fmt"
 	"strings"
 	"time"
 
@@ -178,7 +179,7 @@ func checkStatusSummary(obj data.Object, _ []Condition, summary Summary) Summary
 	if _, ok := obj["message"]; ok {
 		summary.Message = append(summary.Message, obj.String("message"))
 	}
-
+	fmt.Printf("summary from kstatus: %v", summary)
 	return summary
 }
 
@@ -215,6 +216,7 @@ func checkStandard(obj data.Object, _ []Condition, summary Summary) Summary {
 		summary.Transitioning = true
 	}
 
+	fmt.Printf("summary from kstatus: %v", summary)
 	return summary
 }
 
